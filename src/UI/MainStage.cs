@@ -4,10 +4,10 @@ using Terminal.Gui;
 namespace Tiny4X.UI
 {
 
-    public class Terminal : Window
+    public class MainStage : Window
     {
 
-        public Terminal()
+        public MainStage()
         {
             Title = "Tiny4X";
         }
