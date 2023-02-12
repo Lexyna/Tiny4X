@@ -17,9 +17,15 @@ namespace Tiny4X.UI {
         
         private Terminal.Gui.ColorScheme greyOnBlack;
         
+        private Terminal.Gui.ColorScheme greenOnBlack;
+        
+        private Terminal.Gui.ColorScheme tgDefault;
+        
         private Terminal.Gui.FrameView deckView;
         
         private Terminal.Gui.TreeView treeView;
+        
+        private Terminal.Gui.Button btnCreateDeck;
         
         private Terminal.Gui.FrameView cardView;
         
@@ -40,6 +46,7 @@ namespace Tiny4X.UI {
             this.textField = new Terminal.Gui.TextField();
             this.search = new Terminal.Gui.Label();
             this.cardView = new Terminal.Gui.FrameView();
+            this.btnCreateDeck = new Terminal.Gui.Button();
             this.treeView = new Terminal.Gui.TreeView();
             this.deckView = new Terminal.Gui.FrameView();
             this.greyOnBlack = new Terminal.Gui.ColorScheme();
@@ -48,6 +55,18 @@ namespace Tiny4X.UI {
             this.greyOnBlack.Focus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Black, Terminal.Gui.Color.DarkGray);
             this.greyOnBlack.HotFocus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Black, Terminal.Gui.Color.DarkGray);
             this.greyOnBlack.Disabled = new Terminal.Gui.Attribute(Terminal.Gui.Color.DarkGray, Terminal.Gui.Color.Black);
+            this.greenOnBlack = new Terminal.Gui.ColorScheme();
+            this.greenOnBlack.Normal = new Terminal.Gui.Attribute(Terminal.Gui.Color.Green, Terminal.Gui.Color.Black);
+            this.greenOnBlack.HotNormal = new Terminal.Gui.Attribute(Terminal.Gui.Color.BrightGreen, Terminal.Gui.Color.Black);
+            this.greenOnBlack.Focus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Green, Terminal.Gui.Color.Magenta);
+            this.greenOnBlack.HotFocus = new Terminal.Gui.Attribute(Terminal.Gui.Color.BrightGreen, Terminal.Gui.Color.Magenta);
+            this.greenOnBlack.Disabled = new Terminal.Gui.Attribute(Terminal.Gui.Color.Gray, Terminal.Gui.Color.Black);
+            this.tgDefault = new Terminal.Gui.ColorScheme();
+            this.tgDefault.Normal = new Terminal.Gui.Attribute(Terminal.Gui.Color.White, Terminal.Gui.Color.Blue);
+            this.tgDefault.HotNormal = new Terminal.Gui.Attribute(Terminal.Gui.Color.BrightCyan, Terminal.Gui.Color.Blue);
+            this.tgDefault.Focus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Black, Terminal.Gui.Color.Gray);
+            this.tgDefault.HotFocus = new Terminal.Gui.Attribute(Terminal.Gui.Color.BrightBlue, Terminal.Gui.Color.Gray);
+            this.tgDefault.Disabled = new Terminal.Gui.Attribute(Terminal.Gui.Color.Brown, Terminal.Gui.Color.Blue);
             this.Width = Dim.Fill(0);
             this.Height = Dim.Fill(0);
             this.X = 0;
@@ -61,7 +80,7 @@ namespace Tiny4X.UI {
             this.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.Title = "";
             this.deckView.Width = 28;
-            this.deckView.Height = 28;
+            this.deckView.Height = Dim.Fill(0);
             this.deckView.X = 0;
             this.deckView.Y = 0;
             this.deckView.Data = "deckView";
@@ -73,8 +92,8 @@ namespace Tiny4X.UI {
             this.deckView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.deckView.Title = "Decks";
             this.Add(this.deckView);
-            this.treeView.Width = 26;
-            this.treeView.Height = 28;
+            this.treeView.Width = 25;
+            this.treeView.Height = Dim.Fill(2);
             this.treeView.X = 0;
             this.treeView.Y = 0;
             this.treeView.Data = "treeView";
@@ -86,8 +105,18 @@ namespace Tiny4X.UI {
             this.treeView.Style.LeaveLastRow = false;
             this.treeView.Style.ShowBranchLines = true;
             this.deckView.Add(this.treeView);
+            this.btnCreateDeck.Width = 26;
+            this.btnCreateDeck.Height = 1;
+            this.btnCreateDeck.X = 0;
+            this.btnCreateDeck.Y = 33;
+            this.btnCreateDeck.ColorScheme = this.tgDefault;
+            this.btnCreateDeck.Data = "btnCreateDeck";
+            this.btnCreateDeck.Text = "New Deck";
+            this.btnCreateDeck.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnCreateDeck.IsDefault = false;
+            this.deckView.Add(this.btnCreateDeck);
             this.cardView.Width = 24;
-            this.cardView.Height = 28;
+            this.cardView.Height = Dim.Fill(0);
             this.cardView.X = 28;
             this.cardView.Y = 0;
             this.cardView.Data = "cardView";
@@ -127,8 +156,8 @@ namespace Tiny4X.UI {
                         "Item2",
                         "Item3"});
             this.cardView.Add(this.listView);
-            this.descView.Width = 66;
-            this.descView.Height = 28;
+            this.descView.Width = Dim.Fill(0);
+            this.descView.Height = Dim.Fill(0);
             this.descView.X = 52;
             this.descView.Y = 0;
             this.descView.Data = "descView";
@@ -140,8 +169,8 @@ namespace Tiny4X.UI {
             this.descView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.descView.Title = "Description";
             this.Add(this.descView);
-            this.textView.Width = 62;
-            this.textView.Height = 26;
+            this.textView.Width = Dim.Percent(100f);
+            this.textView.Height = Dim.Fill(0);
             this.textView.X = 1;
             this.textView.Y = 0;
             this.textView.AllowsTab = true;

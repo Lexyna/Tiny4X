@@ -22,6 +22,7 @@ namespace Tiny4X.UI
         public DeckEditor()
         {
             InitializeComponent();
+            textView.Enabled = false;
 
             Deck testDeck = new Deck("Beginner Deck");
             Deck testDeck2 = new Deck("OPDeck");
@@ -32,6 +33,8 @@ namespace Tiny4X.UI
             LoadCardUI();
             BuildTreeList();
             LoadDeckUI();
+
+            btnCreateDeck.Clicked += () => newDeckDialog();
         }
 
         private void LoadCardUI()

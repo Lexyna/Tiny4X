@@ -44,7 +44,7 @@ namespace Tiny4X.UI
             this.greyOnBlack.Focus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Black, Terminal.Gui.Color.DarkGray);
             this.greyOnBlack.HotFocus = new Terminal.Gui.Attribute(Terminal.Gui.Color.Black, Terminal.Gui.Color.DarkGray);
             this.greyOnBlack.Disabled = new Terminal.Gui.Attribute(Terminal.Gui.Color.DarkGray, Terminal.Gui.Color.Black);
-            this.Width = 20;
+            this.Width = 30;
             this.Height = 6;
             this.X = 45;
             this.Y = 11;
