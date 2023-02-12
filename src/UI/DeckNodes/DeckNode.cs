@@ -13,7 +13,7 @@ namespace Tiny4X.UI.DeckNodes
 
         public override IList<ITreeNode> Children => cards.Cast<ITreeNode>().ToList();
 
-        public override string Text { get => deck.name; }
+        public override string Text { get => $"{deck.name} ({deck.GetAllCards().Count}/{Deck.maxDeckSize})"; }
 
         public DeckNode(Deck deck)
         {
