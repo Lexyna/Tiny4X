@@ -33,7 +33,9 @@ namespace Tiny4X.GameUtils.Card
         }
         public ICard GetCard(string cardId)
         {
-            throw new NotImplementedException();
+            if (cards.ContainsKey(cardId))
+                return cards[cardId];
+            throw new Exception($"couldn#ät find card '{cardId}'");
         }
 
         public List<string> GetAllCardsIds()

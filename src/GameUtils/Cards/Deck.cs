@@ -16,10 +16,24 @@ namespace Tiny4X.GameUtils.Card
             this.name = name;
         }
 
-        public void AddCard(ICard card)
+        public bool AddCard(ICard card)
         {
-            if (deck.Count >= maxDeckSize) return;
+            if (deck.Count >= maxDeckSize) return false;
             deck.Add(card);
+            return true;
+        }
+
+        public List<ICard> GetAllCards()
+        {
+            return deck;
+        }
+
+        public List<string> GetAllCardsById()
+        {
+            List<string> ids = new List<string>();
+            foreach (ICard card in deck)
+                ids.Add(card.id);
+            return ids;
         }
 
     }

@@ -28,11 +28,42 @@ namespace Tiny4X.UI
 
             LoadCardUI();
             LoadDeckUI();
+        }
+
+        private void LoadCardUI()
+        {
+            listView.Source = new Terminal.Gui.ListWrapper(db.GetAllCardsIds());
+
             listView.SelectedItemChanged += (e) =>
+                       {
+                           string? selected = e.Value.ToString();
+                           if (selected == null) return;
+                           string desc = db.GetDescription(selected);
+                           textView.Text = desc;
+                       };
+
+            listView.MouseClick += (e) =>
             {
-                string desc = db.GetDescription(e.Value.ToString());
-                textView.Text = desc;
+                if (e.MouseEvent.Flags != MouseFlags.Button1DoubleClicked) return;
+                int selected = listView.SelectedItem;
+                AddCardToDeck(db.GetAllCardsIds()[selected]);
             };
+        }
+
+        private void AddCardToDeck(string cardId)
+        {
+            if (treeView.SelectedObject == null) return;
+            string? selected = treeView.SelectedObject.ToString();
+            if (selected == null) return;
+            if (selected == NEW_DECK) return;
+
+            ICard card = db.GetCard(cardId);
+            Deck? selectedDeck = decks.Find(d => d.name == selected);
+            if (selectedDeck == null) return;
+            if (!selectedDeck.AddCard(card)) return;
+            treeView.SelectedObject.Children.Add(new TreeNode(cardId));
+            treeView.RefreshObject(treeView.SelectedObject);
+            treeView.Expand(treeView.SelectedObject);
         }
 
         private void LoadDecks()
@@ -44,19 +75,7 @@ namespace Tiny4X.UI
         {
             Deck deck = new Deck(name);
             decks.Add(deck);
-            UpdateTreeList();
-        }
-
-        private void UpdateTreeList()
-        {
-            treeView.ClearObjects();
-
-            foreach (Deck d in decks)
-            {
-                TreeNode deck = new TreeNode(d.name);
-                treeView.AddObject(deck);
-            }
-            LoadDeckUI();
+            BuildTreeList();
         }
 
         private void LoadDeckUI()
@@ -84,10 +103,11 @@ namespace Tiny4X.UI
 
             treeView.MouseClick += (e) =>
             {
+                if (e.MouseEvent.Flags != MouseFlags.Button1DoubleClicked) return;
                 if (treeView.SelectedObject is null) return;
 
-                string selected = treeView.SelectedObject.ToString();
-
+                string? selected = treeView.SelectedObject.ToString();
+                if (selected == null) return;
                 if (selected != NEW_DECK) return;
 
                 openDiag();
@@ -95,9 +115,22 @@ namespace Tiny4X.UI
 
         }
 
-        private void LoadCardUI()
+        private void BuildTreeList()
         {
-            listView.Source = new Terminal.Gui.ListWrapper(db.GetAllCardsIds());
+            treeView.ClearObjects();
+
+            foreach (Deck d in decks)
+            {
+                TreeNode deck = new TreeNode(d.name);
+                foreach (string id in d.GetAllCardsById())
+                {
+                    TreeNode card = new TreeNode(id);
+                    deck.Children.Add(card);
+                }
+
+                treeView.AddObject(deck);
+            }
+            LoadDeckUI();
         }
     }
 }
