@@ -25,16 +25,26 @@ namespace Tiny4X.GameUtils.Card
             cards.Add(workshop.id, workshop);
         }
 
-        public ICard GetCard(string cardId)
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetDescription(string cardId)
         {
             if (cards.ContainsKey(cardId))
                 return cards[cardId].GetDescription();
             return "Card not found";
         }
+        public ICard GetCard(string cardId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetAllCardsIds()
+        {
+            List<string> cardList = new List<string>();
+
+            foreach (KeyValuePair<string, ICard> entry in this.cards)
+                cardList.Add(entry.Key);
+
+            return cardList;
+        }
+
     }
 }

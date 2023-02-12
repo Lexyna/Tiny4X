@@ -8,35 +8,32 @@
 //      the code is regenerated.
 //  </auto-generated>
 // -----------------------------------------------------------------------------
-namespace Tiny4X.UI
-{
+namespace Tiny4X.UI {
     using System;
     using Terminal.Gui;
-
-
-    public partial class DeckEditor : Terminal.Gui.Window
-    {
-
+    
+    
+    public partial class DeckEditor : Terminal.Gui.Window {
+        
         private Terminal.Gui.ColorScheme greyOnBlack;
-
+        
         private Terminal.Gui.FrameView deckView;
-
+        
         private Terminal.Gui.TreeView treeView;
-
+        
         private Terminal.Gui.FrameView cardView;
-
+        
         private Terminal.Gui.Label search;
-
+        
         private Terminal.Gui.TextField textField;
-
+        
         private Terminal.Gui.ListView listView;
-
+        
         private Terminal.Gui.FrameView descView;
-
+        
         private Terminal.Gui.TextView textView;
-
-        private void InitializeComponent()
-        {
+        
+        private void InitializeComponent() {
             this.textView = new Terminal.Gui.TextView();
             this.descView = new Terminal.Gui.FrameView();
             this.listView = new Terminal.Gui.ListView();
@@ -74,7 +71,7 @@ namespace Tiny4X.UI
             this.deckView.Border.Effect3DBrush = null;
             this.deckView.Border.DrawMarginFrame = true;
             this.deckView.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.deckView.Title = "Heya";
+            this.deckView.Title = "Decks";
             this.Add(this.deckView);
             this.treeView.Width = 26;
             this.treeView.Height = 28;
@@ -100,19 +97,19 @@ namespace Tiny4X.UI
             this.cardView.Border.Effect3DBrush = null;
             this.cardView.Border.DrawMarginFrame = true;
             this.cardView.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.cardView.Title = "Heya";
+            this.cardView.Title = "Cards";
             this.Add(this.cardView);
-            this.search.Width = 4;
+            this.search.Width = 7;
             this.search.Height = 1;
             this.search.X = 0;
             this.search.Y = 0;
             this.search.Data = "search";
-            this.search.Text = "Heya";
+            this.search.Text = "Keywords:";
             this.search.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.cardView.Add(this.search);
             this.textField.Width = 17;
             this.textField.Height = 2;
-            this.textField.X = 5;
+            this.textField.X = 9;
             this.textField.Y = 0;
             this.textField.Secret = false;
             this.textField.Data = "textField";
@@ -141,7 +138,7 @@ namespace Tiny4X.UI
             this.descView.Border.Effect3DBrush = null;
             this.descView.Border.DrawMarginFrame = true;
             this.descView.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.descView.Title = "Heya";
+            this.descView.Title = "Description";
             this.Add(this.descView);
             this.textView.Width = 62;
             this.textView.Height = 26;
@@ -151,7 +148,7 @@ namespace Tiny4X.UI
             this.textView.AllowsReturn = true;
             this.textView.WordWrap = false;
             this.textView.Data = "textView";
-            this.textView.Text = "Description";
+            this.textView.Text = "";
             this.textView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.descView.Add(this.textView);
         }

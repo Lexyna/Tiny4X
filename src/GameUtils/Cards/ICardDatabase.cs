@@ -8,6 +8,8 @@ namespace Tiny4X.GameUtils.Card
 
         public ICard GetCard(string cardId);
 
+        public List<string> GetAllCardsIds();
+
     }
 
 }

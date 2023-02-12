@@ -1,3 +1,6 @@
+using Tiny4X.GameUtils.Card;
+using Terminal.Gui.Trees;
+using Terminal.Gui;
 
 //------------------------------------------------------------------------------
 
@@ -9,18 +12,92 @@
 // -----------------------------------------------------------------------------
 namespace Tiny4X.UI
 {
-    using Terminal.Gui;
-
-
     public partial class DeckEditor
     {
+        private static string NEW_DECK = "new Deck";
+
+        List<Deck> decks;
+
+        CardDatabase db = new CardDatabase();
 
         public DeckEditor()
         {
             InitializeComponent();
-            deckView.Title = "Decks";
-            cardView.Title = "Cards";
-            descView.Title = "Description";
+
+            LoadDecks();
+
+            LoadCardUI();
+            LoadDeckUI();
+            listView.SelectedItemChanged += (e) =>
+            {
+                string desc = db.GetDescription(e.Value.ToString());
+                textView.Text = desc;
+            };
+        }
+
+        private void LoadDecks()
+        {
+            decks = new List<Deck>();
+        }
+
+        private void CreateNewDeck(string name)
+        {
+            Deck deck = new Deck(name);
+            decks.Add(deck);
+            UpdateTreeList();
+        }
+
+        private void UpdateTreeList()
+        {
+            treeView.ClearObjects();
+
+            foreach (Deck d in decks)
+            {
+                TreeNode deck = new TreeNode(d.name);
+                treeView.AddObject(deck);
+            }
+            LoadDeckUI();
+        }
+
+        private void LoadDeckUI()
+        {
+            TreeNode newDeck = new TreeNode(NEW_DECK);
+
+            treeView.AddObject(newDeck);
+
+            var openDiag = () =>
+            {
+                var buttons = new List<Button>();
+                Button btnOk = new Button("Ok", true);
+                Button btnCancel = new Button("Cancel");
+                buttons.Add(btnOk);
+                buttons.Add(btnCancel);
+
+                InputDialog dialog = new InputDialog("New Deck", "Name:");
+                Application.Run(dialog);
+
+                if (dialog.value == null) return;
+
+                Console.WriteLine($"new Deck: {dialog.value}");
+                CreateNewDeck(dialog.value);
+            };
+
+            treeView.MouseClick += (e) =>
+            {
+                if (treeView.SelectedObject is null) return;
+
+                string selected = treeView.SelectedObject.ToString();
+
+                if (selected != NEW_DECK) return;
+
+                openDiag();
+            };
+
+        }
+
+        private void LoadCardUI()
+        {
+            listView.Source = new Terminal.Gui.ListWrapper(db.GetAllCardsIds());
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Tiny4X.GameUtils.Card
 
         public string GetDescription()
         {
-            throw new NotImplementedException();
+            return "Provides +10p/t";
         }
 
         public void OnPlay()
