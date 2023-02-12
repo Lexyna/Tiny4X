@@ -57,9 +57,12 @@ namespace Tiny4X.UI
         private void AddCardToDeck(string cardId)
         {
             if (treeView.SelectedObject == null) return;
-            if (!(treeView.SelectedObject is DeckNode)) return;
 
-            DeckNode selectedDeck = (DeckNode)treeView.SelectedObject;
+            DeckNode selectedDeck;
+            if (treeView.SelectedObject is DeckNode)
+                selectedDeck = (DeckNode)treeView.SelectedObject;
+            else
+                selectedDeck = ((CardNode)treeView.SelectedObject).deckNode;
             ICard card = db.GetCard(cardId);
             if (!selectedDeck.deck.AddCard(card)) return;
 
