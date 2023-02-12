@@ -1,4 +1,5 @@
 using Tiny4X.GameUtils.Card;
+using Tiny4X.UI.DeckNodes;
 using Terminal.Gui.Trees;
 using Terminal.Gui;
 
@@ -14,9 +15,7 @@ namespace Tiny4X.UI
 {
     public partial class DeckEditor
     {
-        private static string NEW_DECK = "new Deck";
-
-        List<Deck> decks;
+        List<Deck> decks = new List<Deck>();
 
         CardDatabase db = new CardDatabase();
 
@@ -24,9 +23,14 @@ namespace Tiny4X.UI
         {
             InitializeComponent();
 
-            LoadDecks();
+            Deck testDeck = new Deck("Beginner Deck");
+            Deck testDeck2 = new Deck("OPDeck");
+
+            decks.Add(testDeck);
+            decks.Add(testDeck2);
 
             LoadCardUI();
+            BuildTreeList();
             LoadDeckUI();
         }
 
@@ -53,22 +57,15 @@ namespace Tiny4X.UI
         private void AddCardToDeck(string cardId)
         {
             if (treeView.SelectedObject == null) return;
-            string? selected = treeView.SelectedObject.ToString();
-            if (selected == null) return;
-            if (selected == NEW_DECK) return;
+            if (!(treeView.SelectedObject is DeckNode)) return;
 
+            DeckNode selectedDeck = (DeckNode)treeView.SelectedObject;
             ICard card = db.GetCard(cardId);
-            Deck? selectedDeck = decks.Find(d => d.name == selected);
-            if (selectedDeck == null) return;
-            if (!selectedDeck.AddCard(card)) return;
-            treeView.SelectedObject.Children.Add(new TreeNode(cardId));
-            treeView.RefreshObject(treeView.SelectedObject);
-            treeView.Expand(treeView.SelectedObject);
-        }
+            if (!selectedDeck.deck.AddCard(card)) return;
 
-        private void LoadDecks()
-        {
-            decks = new List<Deck>();
+            selectedDeck.AddChild(cardId);
+            treeView.RefreshObject(selectedDeck);
+            treeView.Expand(selectedDeck);
         }
 
         private void CreateNewDeck(string name)
@@ -78,39 +75,47 @@ namespace Tiny4X.UI
             BuildTreeList();
         }
 
+        private void newDeckDialog()
+        {
+            var buttons = new List<Button>();
+            Button btnOk = new Button("Ok", true);
+            Button btnCancel = new Button("Cancel");
+            buttons.Add(btnOk);
+            buttons.Add(btnCancel);
+
+            InputDialog dialog = new InputDialog("New Deck", "Name:");
+            Application.Run(dialog);
+
+            if (dialog.value == null) return;
+
+            Console.WriteLine($"new Deck: {dialog.value}");
+            CreateNewDeck(dialog.value);
+        }
+
         private void LoadDeckUI()
         {
-            TreeNode newDeck = new TreeNode(NEW_DECK);
-
-            treeView.AddObject(newDeck);
-
-            var openDiag = () =>
+            treeView.SelectionChanged += (obj, e) =>
             {
-                var buttons = new List<Button>();
-                Button btnOk = new Button("Ok", true);
-                Button btnCancel = new Button("Cancel");
-                buttons.Add(btnOk);
-                buttons.Add(btnCancel);
-
-                InputDialog dialog = new InputDialog("New Deck", "Name:");
-                Application.Run(dialog);
-
-                if (dialog.value == null) return;
-
-                Console.WriteLine($"new Deck: {dialog.value}");
-                CreateNewDeck(dialog.value);
+                if (!(treeView.SelectedObject is CardNode)) return;
+                CardNode selectedCard = (CardNode)treeView.SelectedObject;
+                string desc = db.GetDescription(selectedCard.id);
+                textView.Text = desc;
+                textView.SetNeedsDisplay();
             };
 
             treeView.MouseClick += (e) =>
             {
-                if (e.MouseEvent.Flags != MouseFlags.Button1DoubleClicked) return;
                 if (treeView.SelectedObject is null) return;
 
-                string? selected = treeView.SelectedObject.ToString();
-                if (selected == null) return;
-                if (selected != NEW_DECK) return;
-
-                openDiag();
+                if (e.MouseEvent.Flags == MouseFlags.Button3DoubleClicked)
+                {
+                    if (!(treeView.SelectedObject is CardNode)) return;
+                    CardNode selectedCard = (CardNode)treeView.SelectedObject;
+                    selectedCard.deckNode.deck.RemoveCard(selectedCard.id);
+                    selectedCard.deckNode.Refresh();
+                    treeView.RefreshObject(selectedCard.deckNode);
+                    treeView.Expand(selectedCard.deckNode);
+                }
             };
 
         }
@@ -121,16 +126,10 @@ namespace Tiny4X.UI
 
             foreach (Deck d in decks)
             {
-                TreeNode deck = new TreeNode(d.name);
-                foreach (string id in d.GetAllCardsById())
-                {
-                    TreeNode card = new TreeNode(id);
-                    deck.Children.Add(card);
-                }
+                DeckNode deckNode = new DeckNode(d);
+                treeView.AddObject(deckNode);
 
-                treeView.AddObject(deck);
             }
-            LoadDeckUI();
         }
     }
 }

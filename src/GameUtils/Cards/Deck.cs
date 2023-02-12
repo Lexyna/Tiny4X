@@ -23,6 +23,13 @@ namespace Tiny4X.GameUtils.Card
             return true;
         }
 
+        public bool RemoveCard(string cardId)
+        {
+            ICard? card = deck.Find(d => d.id == cardId);
+            if (card == null) return false;
+            return deck.Remove(card);
+        }
+
         public List<ICard> GetAllCards()
         {
             return deck;
