@@ -1,4 +1,4 @@
 ﻿
 using Terminal.Gui;
-Application.Run<Tiny4X.UI.DeckEditor>();
+Application.Run<Tiny4X.UI.MainMenu.MainMenu>();
 Application.Shutdown();

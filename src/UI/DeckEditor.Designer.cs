@@ -71,6 +71,7 @@ namespace Tiny4X.UI {
             this.Height = Dim.Fill(0);
             this.X = 0;
             this.Y = 0;
+            this.ColorScheme = this.greyOnBlack;
             this.Modal = false;
             this.Border.BorderStyle = Terminal.Gui.BorderStyle.Single;
             this.Border.BorderBrush = Terminal.Gui.Color.Blue;
