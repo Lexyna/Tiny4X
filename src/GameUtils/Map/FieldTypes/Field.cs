@@ -12,6 +12,10 @@ namespace Tiny4X.GameUtils.Map
         Resource gold;
         Resource science;
 
+        ///<summary>
+        ///Base class for Fields.
+        /// Defines the coordinate and base production values on this tile.  
+        ///</summary>
         public Field(int coordX, int coordY, int food, int production, int gold, int science)
         {
             this.cordX = coordX;
@@ -22,6 +26,9 @@ namespace Tiny4X.GameUtils.Map
             this.science = new Resource(Resource.Type.Science, science);
         }
 
+        ///<summary>
+        ///Returns the base Resource yield of this Filed and applies it to [WIP]
+        ///</summary>
         public virtual void Yield()
         {
 
@@ -32,6 +39,11 @@ namespace Tiny4X.GameUtils.Map
 
         }
 
+        ///<summary>
+        ///Returns the Resource bonus this Field offer to adjacent Field.
+        ///Can be negative.
+        ///Can only offer one Resource.</summary>
+        ///<returns>Resource</returns> 
         public abstract Resource FieldBonus();
 
     }
