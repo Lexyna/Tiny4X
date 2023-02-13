@@ -8,31 +8,31 @@
 //      the code is regenerated.
 //  </auto-generated>
 // -----------------------------------------------------------------------------
-namespace Tiny4X.UI.MainMenu
-{
+namespace Tiny4X.UI.MainMenu {
     using System;
     using Terminal.Gui;
-
-
-    public partial class MainMenu : Terminal.Gui.Window
-    {
-
+    
+    
+    public partial class MainMenu : Terminal.Gui.Window {
+        
         private Terminal.Gui.ColorScheme greyOnBlack;
-
+        
+        private Terminal.Gui.Button btnSinglePlayer;
+        
         private Terminal.Gui.Button btnJoin;
-
+        
         private Terminal.Gui.Button btnHost;
-
+        
         private Terminal.Gui.Button btnEdit;
-
+        
         private Terminal.Gui.Button btnExit;
-
-        private void InitializeComponent()
-        {
+        
+        private void InitializeComponent() {
             this.btnExit = new Terminal.Gui.Button();
             this.btnEdit = new Terminal.Gui.Button();
             this.btnHost = new Terminal.Gui.Button();
             this.btnJoin = new Terminal.Gui.Button();
+            this.btnSinglePlayer = new Terminal.Gui.Button();
             this.greyOnBlack = new Terminal.Gui.ColorScheme();
             this.greyOnBlack.Normal = new Terminal.Gui.Attribute(Terminal.Gui.Color.DarkGray, Terminal.Gui.Color.Black);
             this.greyOnBlack.HotNormal = new Terminal.Gui.Attribute(Terminal.Gui.Color.DarkGray, Terminal.Gui.Color.Black);
@@ -52,10 +52,19 @@ namespace Tiny4X.UI.MainMenu
             this.Border.DrawMarginFrame = true;
             this.TextAlignment = Terminal.Gui.TextAlignment.Centered;
             this.Title = "Tiny4X!";
+            this.btnSinglePlayer.Width = 17;
+            this.btnSinglePlayer.Height = 1;
+            this.btnSinglePlayer.X = Pos.Center();
+            this.btnSinglePlayer.Y = Pos.Percent(30f);
+            this.btnSinglePlayer.Data = "btnSinglePlayer";
+            this.btnSinglePlayer.Text = "Single Player";
+            this.btnSinglePlayer.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnSinglePlayer.IsDefault = false;
+            this.Add(this.btnSinglePlayer);
             this.btnJoin.Width = 13;
             this.btnJoin.Height = 1;
             this.btnJoin.X = Pos.Center();
-            this.btnJoin.Y = Pos.Top(btnHost) - 2;
+            this.btnJoin.Y = Pos.Percent(40f);
             this.btnJoin.Data = "btnJoin";
             this.btnJoin.Text = "Join Game";
             this.btnJoin.TextAlignment = Terminal.Gui.TextAlignment.Centered;
@@ -64,7 +73,7 @@ namespace Tiny4X.UI.MainMenu
             this.btnHost.Width = 13;
             this.btnHost.Height = 1;
             this.btnHost.X = Pos.Center();
-            this.btnHost.Y = Pos.Center() - 1;
+            this.btnHost.Y = Pos.Percent(50f);
             this.btnHost.Data = "btnHost";
             this.btnHost.Text = "Host Game";
             this.btnHost.TextAlignment = Terminal.Gui.TextAlignment.Centered;
@@ -73,7 +82,7 @@ namespace Tiny4X.UI.MainMenu
             this.btnEdit.Width = 13;
             this.btnEdit.Height = 1;
             this.btnEdit.X = Pos.Center();
-            this.btnEdit.Y = Pos.Bottom(btnHost) + 1;
+            this.btnEdit.Y = Pos.Percent(60f);
             this.btnEdit.Data = "btnEdit";
             this.btnEdit.Text = "Edit Deck";
             this.btnEdit.TextAlignment = Terminal.Gui.TextAlignment.Centered;
@@ -82,7 +91,7 @@ namespace Tiny4X.UI.MainMenu
             this.btnExit.Width = 13;
             this.btnExit.Height = 1;
             this.btnExit.X = Pos.Center();
-            this.btnExit.Y = Pos.Bottom(btnEdit) + 1;
+            this.btnExit.Y = Pos.Percent(70f);
             this.btnExit.Data = "btnExit";
             this.btnExit.Text = "Exit Game";
             this.btnExit.TextAlignment = Terminal.Gui.TextAlignment.Centered;
