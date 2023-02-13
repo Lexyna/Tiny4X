@@ -1,3 +1,4 @@
+using Tiny4X.GameUtils.Resources;
 namespace Tiny4X.GameUtils.Map
 {
 
@@ -7,11 +8,16 @@ namespace Tiny4X.GameUtils.Map
 
         public int cordY { get; }
 
-        public GrassLand(int cordX, int cordY) : base(cordX, cordY)
+        public GrassLand(int cordX, int cordY) :
+            base(cordX, cordY, 2, 0, 0, 0)
         {
 
         }
 
+        public override Resource FieldBonus()
+        {
+            return new Resource(Resource.Type.Food, 1);
+        }
 
     }
 
