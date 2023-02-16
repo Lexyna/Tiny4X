@@ -21,8 +21,7 @@ namespace Tiny4X.UI.GameStage
             InitializeComponent();
 
             Map map = new Map();
-            mapTabel.Table = map.ConvertMapToTable();
-            //mapTabel.SetNeedsDisplay();
+            mapTable.Table = map.ConvertMapToTable();
         }
     }
 }
