@@ -19,6 +19,11 @@ namespace Tiny4X.GameUtils.Map
             return new Resource(Resource.Type.Food, 1);
         }
 
+        public override string GetDisplayString()
+        {
+            return "G";
+        }
+
     }
 
 }

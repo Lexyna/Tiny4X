@@ -1,3 +1,4 @@
+using Tiny4X.GameUtils.Map;
 
 //------------------------------------------------------------------------------
 
@@ -7,14 +8,21 @@
 //      You can make changes to this file and they will not be overwritten when saving.
 //  </auto-generated>
 // -----------------------------------------------------------------------------
-namespace Tiny4X.UI.GameStage {
+namespace Tiny4X.UI.GameStage
+{
     using Terminal.Gui;
-    
-    
-    public partial class GameStage {
-        
-        public GameStage() {
+
+
+    public partial class GameStage
+    {
+
+        public GameStage()
+        {
             InitializeComponent();
+
+            Map map = new Map();
+            mapTabel.Table = map.ConvertMapToTable();
+            //mapTabel.SetNeedsDisplay();
         }
     }
 }

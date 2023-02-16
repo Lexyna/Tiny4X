@@ -46,6 +46,12 @@ namespace Tiny4X.GameUtils.Map
         ///<returns>Resource</returns> 
         public abstract Resource FieldBonus();
 
+
+        ///<summary>
+        ///Returns the Letter Description from this filed to be displayed on the World Map
+        ///</summary>
+        public abstract string GetDisplayString();
+
     }
 
 }
