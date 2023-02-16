@@ -69,10 +69,25 @@ namespace Tiny4X.UI.GameStage {
         
         private Terminal.Gui.FrameView controllView;
         
+        private Terminal.Gui.Button btnFarm;
+        
+        private Terminal.Gui.Button btnWorkshop;
+        
         private Terminal.Gui.Button btnPlayCard;
         
+        private Terminal.Gui.Button btnEndTurn;
+        
+        private Terminal.Gui.Button btnInstitute;
+        
+        private Terminal.Gui.Button btnMarketplace;
+        
         private void InitializeComponent() {
+            this.btnMarketplace = new Terminal.Gui.Button();
+            this.btnInstitute = new Terminal.Gui.Button();
+            this.btnEndTurn = new Terminal.Gui.Button();
             this.btnPlayCard = new Terminal.Gui.Button();
+            this.btnWorkshop = new Terminal.Gui.Button();
+            this.btnFarm = new Terminal.Gui.Button();
             this.controllView = new Terminal.Gui.FrameView();
             this.selectedCardEffectTextField = new Terminal.Gui.TextView();
             this.selectedCardEffectView = new Terminal.Gui.FrameView();
@@ -475,15 +490,60 @@ namespace Tiny4X.UI.GameStage {
             this.controllView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.controllView.Title = "Controlls";
             this.Add(this.controllView);
+            this.btnFarm.Width = 15;
+            this.btnFarm.Height = 1;
+            this.btnFarm.X = 2;
+            this.btnFarm.Y = Pos.Percent(20f);
+            this.btnFarm.Data = "btnFarm";
+            this.btnFarm.Text = "   Farm    ";
+            this.btnFarm.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnFarm.IsDefault = false;
+            this.controllView.Add(this.btnFarm);
+            this.btnWorkshop.Width = 15;
+            this.btnWorkshop.Height = 1;
+            this.btnWorkshop.X = 2;
+            this.btnWorkshop.Y = Pos.Percent(40f);
+            this.btnWorkshop.Data = "btnWorkshop";
+            this.btnWorkshop.Text = " Workshop  ";
+            this.btnWorkshop.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnWorkshop.IsDefault = false;
+            this.controllView.Add(this.btnWorkshop);
             this.btnPlayCard.Width = 10;
             this.btnPlayCard.Height = 1;
-            this.btnPlayCard.X = Pos.Center();
+            this.btnPlayCard.X = Pos.Center() - 15;
             this.btnPlayCard.Y = Pos.Center();
             this.btnPlayCard.Data = "btnPlayCard";
             this.btnPlayCard.Text = "Play Card";
             this.btnPlayCard.TextAlignment = Terminal.Gui.TextAlignment.Centered;
             this.btnPlayCard.IsDefault = false;
             this.controllView.Add(this.btnPlayCard);
+            this.btnEndTurn.Width = 12;
+            this.btnEndTurn.Height = 1;
+            this.btnEndTurn.X = Pos.Center() + 1;
+            this.btnEndTurn.Y = Pos.Center();
+            this.btnEndTurn.Data = "btnEndTurn";
+            this.btnEndTurn.Text = "End Turn";
+            this.btnEndTurn.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnEndTurn.IsDefault = false;
+            this.controllView.Add(this.btnEndTurn);
+            this.btnInstitute.Width = 15;
+            this.btnInstitute.Height = 1;
+            this.btnInstitute.X = 2;
+            this.btnInstitute.Y = Pos.Percent(60f);
+            this.btnInstitute.Data = "btnInstitute";
+            this.btnInstitute.Text = " Institute ";
+            this.btnInstitute.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnInstitute.IsDefault = false;
+            this.controllView.Add(this.btnInstitute);
+            this.btnMarketplace.Width = 15;
+            this.btnMarketplace.Height = 1;
+            this.btnMarketplace.X = 2;
+            this.btnMarketplace.Y = Pos.Percent(80f);
+            this.btnMarketplace.Data = "btnMarketplace";
+            this.btnMarketplace.Text = "Marketplace";
+            this.btnMarketplace.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.btnMarketplace.IsDefault = false;
+            this.controllView.Add(this.btnMarketplace);
         }
     }
 }
