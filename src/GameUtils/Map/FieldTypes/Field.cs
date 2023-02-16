@@ -1,4 +1,5 @@
 using Tiny4X.GameUtils.Resources;
+using Tiny4X.GameUtils.Buildings;
 namespace Tiny4X.GameUtils.Map
 {
 
@@ -11,6 +12,8 @@ namespace Tiny4X.GameUtils.Map
         protected Resource production;
         protected Resource gold;
         protected Resource science;
+
+        protected Building? building;
 
         ///<summary>
         ///Base class for Fields.
