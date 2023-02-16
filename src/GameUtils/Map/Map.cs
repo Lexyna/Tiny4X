@@ -41,6 +41,11 @@ namespace Tiny4X.GameUtils.Map
             return dt;
         }
 
+        public string GetFieldInfo(int x, int y)
+        {
+            if (x >= map.GetLength(1) || y >= map.GetLength(0)) return "";
+            return map[y, x].GetFieldInfo();
+        }
 
     }
 

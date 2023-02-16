@@ -20,8 +20,30 @@ namespace Tiny4X.UI.GameStage
         {
             InitializeComponent();
 
+            TurnOffTextFields();
+
             Map map = new Map();
             mapTable.Table = map.ConvertMapToTable();
+
+            mapTable.SelectedCellChanged += ((e) =>
+            {
+                if (e.NewCol == 0) return;
+
+                //Console.WriteLine($"selected: {e.NewRow}/{e.NewCol - 1}");
+                tileInfoTextArea.Text = map.GetFieldInfo(e.NewCol - 1, e.NewRow);
+            });
+
+        }
+
+        private void TurnOffTextFields()
+        {
+            tileInfoTextArea.Enabled = false;
+            descriptionTextfield.Enabled = false;
+            selectedCardEffectTextField.Enabled = false;
+            researchDescriptionTextArea.Enabled = false;
+            helpTextArea.Enabled = false;
+            statsTextArea.Enabled = false;
+            effectsTextArea.Enabled = false;
         }
     }
 }

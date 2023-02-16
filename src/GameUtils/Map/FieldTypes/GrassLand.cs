@@ -24,6 +24,16 @@ namespace Tiny4X.GameUtils.Map
             return "G";
         }
 
+        public override string GetFieldInfo()
+        {
+            string info = "";
+
+            info = $"Yields: {food.amount}food per turn";
+            info += "\nEffects: none";
+
+            return info;
+        }
+
     }
 
 }

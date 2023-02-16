@@ -7,10 +7,10 @@ namespace Tiny4X.GameUtils.Map
         int cordX { get; }
         int cordY { get; }
 
-        Resource food;
-        Resource production;
-        Resource gold;
-        Resource science;
+        protected Resource food;
+        protected Resource production;
+        protected Resource gold;
+        protected Resource science;
 
         ///<summary>
         ///Base class for Fields.
@@ -51,6 +51,12 @@ namespace Tiny4X.GameUtils.Map
         ///Returns the Letter Description from this filed to be displayed on the World Map
         ///</summary>
         public abstract string GetDisplayString();
+
+        ///<summary>
+        ///Returns a detailed summary of the yields, buildings and other effects active
+        /// on this tile.
+        ///</summary>
+        public abstract string GetFieldInfo();
 
     }
 

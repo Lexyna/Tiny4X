@@ -45,7 +45,7 @@ namespace Tiny4X.UI.GameStage {
         
         private Terminal.Gui.FrameView researchDescriptionView;
         
-        private Terminal.Gui.TextView reserachDescriptionTextArea;
+        private Terminal.Gui.TextView researchDescriptionTextArea;
         
         private Terminal.Gui.FrameView topicView;
         
@@ -65,7 +65,7 @@ namespace Tiny4X.UI.GameStage {
         
         private Terminal.Gui.FrameView selectedCardEffectView;
         
-        private Terminal.Gui.TextView selectedCardeffectTextField;
+        private Terminal.Gui.TextView selectedCardEffectTextField;
         
         private Terminal.Gui.FrameView controllView;
         
@@ -74,7 +74,7 @@ namespace Tiny4X.UI.GameStage {
         private void InitializeComponent() {
             this.btnPlayCard = new Terminal.Gui.Button();
             this.controllView = new Terminal.Gui.FrameView();
-            this.selectedCardeffectTextField = new Terminal.Gui.TextView();
+            this.selectedCardEffectTextField = new Terminal.Gui.TextView();
             this.selectedCardEffectView = new Terminal.Gui.FrameView();
             this.descriptionTextfield = new Terminal.Gui.TextView();
             this.descriptionView = new Terminal.Gui.FrameView();
@@ -84,7 +84,7 @@ namespace Tiny4X.UI.GameStage {
             this.helpView = new Terminal.Gui.FrameView();
             this.topicList = new Terminal.Gui.ListView();
             this.topicView = new Terminal.Gui.FrameView();
-            this.reserachDescriptionTextArea = new Terminal.Gui.TextView();
+            this.researchDescriptionTextArea = new Terminal.Gui.TextView();
             this.researchDescriptionView = new Terminal.Gui.FrameView();
             this.allResearchList = new Terminal.Gui.ListView();
             this.allResearchView = new Terminal.Gui.FrameView();
@@ -321,17 +321,17 @@ namespace Tiny4X.UI.GameStage {
             this.researchDescriptionView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.researchDescriptionView.Title = "Description";
             infoViewresearch.View.Add(this.researchDescriptionView);
-            this.reserachDescriptionTextArea.Width = Dim.Fill(0);
-            this.reserachDescriptionTextArea.Height = Dim.Fill(0);
-            this.reserachDescriptionTextArea.X = 1;
-            this.reserachDescriptionTextArea.Y = 0;
-            this.reserachDescriptionTextArea.AllowsTab = true;
-            this.reserachDescriptionTextArea.AllowsReturn = true;
-            this.reserachDescriptionTextArea.WordWrap = false;
-            this.reserachDescriptionTextArea.Data = "reserachDescriptionTextArea";
-            this.reserachDescriptionTextArea.Text = "Example Text\r\n";
-            this.reserachDescriptionTextArea.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.researchDescriptionView.Add(this.reserachDescriptionTextArea);
+            this.researchDescriptionTextArea.Width = Dim.Fill(0);
+            this.researchDescriptionTextArea.Height = Dim.Fill(0);
+            this.researchDescriptionTextArea.X = 1;
+            this.researchDescriptionTextArea.Y = 0;
+            this.researchDescriptionTextArea.AllowsTab = true;
+            this.researchDescriptionTextArea.AllowsReturn = true;
+            this.researchDescriptionTextArea.WordWrap = false;
+            this.researchDescriptionTextArea.Data = "researchDescriptionTextArea";
+            this.researchDescriptionTextArea.Text = "Example Text\r\n";
+            this.researchDescriptionTextArea.TextAlignment = Terminal.Gui.TextAlignment.Left;
+            this.researchDescriptionView.Add(this.researchDescriptionTextArea);
             infoView.AddTab(infoViewresearch, false);
             Terminal.Gui.TabView.Tab infoViewhelp;
             infoViewhelp = new Terminal.Gui.TabView.Tab("Help", new View());
@@ -451,17 +451,17 @@ namespace Tiny4X.UI.GameStage {
             this.selectedCardEffectView.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.selectedCardEffectView.Title = "Selected Card Effects";
             this.handView.Add(this.selectedCardEffectView);
-            this.selectedCardeffectTextField.Width = Dim.Fill(0);
-            this.selectedCardeffectTextField.Height = Dim.Fill(0);
-            this.selectedCardeffectTextField.X = 1;
-            this.selectedCardeffectTextField.Y = 0;
-            this.selectedCardeffectTextField.AllowsTab = true;
-            this.selectedCardeffectTextField.AllowsReturn = true;
-            this.selectedCardeffectTextField.WordWrap = false;
-            this.selectedCardeffectTextField.Data = "selectedCardeffectTextField";
-            this.selectedCardeffectTextField.Text = "Example Text\r\n";
-            this.selectedCardeffectTextField.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.selectedCardEffectView.Add(this.selectedCardeffectTextField);
+            this.selectedCardEffectTextField.Width = Dim.Fill(0);
+            this.selectedCardEffectTextField.Height = Dim.Fill(0);
+            this.selectedCardEffectTextField.X = 1;
+            this.selectedCardEffectTextField.Y = 0;
+            this.selectedCardEffectTextField.AllowsTab = true;
+            this.selectedCardEffectTextField.AllowsReturn = true;
+            this.selectedCardEffectTextField.WordWrap = false;
+            this.selectedCardEffectTextField.Data = "selectedCardEffectTextField";
+            this.selectedCardEffectTextField.Text = "Example Text\r\n";
+            this.selectedCardEffectTextField.TextAlignment = Terminal.Gui.TextAlignment.Left;
+            this.selectedCardEffectView.Add(this.selectedCardEffectTextField);
             this.controllView.Width = Dim.Fill(0);
             this.controllView.Height = Dim.Fill(0);
             this.controllView.X = Pos.Percent(50f);
